@@ -1,0 +1,10 @@
+import express from 'express';
+import authuser from '../middlewares/authuser.js';
+import authseller from '../middlewares/authseller.js';
+import { placeordercod, getallorders, getuserorders ,placeorderstripe} from '../controllers/ordercontroller.js';
+const orderrouter = express.Router();
+orderrouter.post('/cod', authuser, placeordercod);
+orderrouter.post('/stripe', authuser, placeorderstripe);
+orderrouter.get('/user', authuser, getuserorders);
+orderrouter.get('/seller', authseller, getallorders);
+export default orderrouter;
